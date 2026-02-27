@@ -25,7 +25,7 @@ from typing import Optional, Sequence
 import numpy as np
 import torch
 import torch.nn as nn
-from huggingface_hub import PyTorchModelHubMixin
+#from huggingface_hub import PyTorchModelHubMixin
 from PIL import Image
 
 from depth_anything_3.cfg import create_object, load_config
@@ -45,7 +45,8 @@ SAFETENSORS_NAME = "model.safetensors"
 CONFIG_NAME = "config.json"
 
 
-class DepthAnything3(nn.Module, PyTorchModelHubMixin):
+#class DepthAnything3(nn.Module, PyTorchModelHubMixin):
+class DepthAnything3(nn.Module):
     """
     Depth Anything 3 main API class.
 
@@ -70,7 +71,7 @@ class DepthAnything3(nn.Module, PyTorchModelHubMixin):
         prediction = model.inference(images, export_dir="output", export_format="glb")
     """
 
-    _commit_hash: str | None = None  # Set by mixin when loading from Hub
+    #_commit_hash: str | None = None  # Set by mixin when loading from Hub
 
     def __init__(self, model_name: str = "da3-large", **kwargs):
         """
