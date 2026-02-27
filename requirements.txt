@@ -1,24 +1,25 @@
-pre-commit
-trimesh
-torch>=2
-torchvision
-einops
-huggingface_hub
-imageio
-numpy<2
-opencv-python
-xformers
-open3d
-fastapi
-uvicorn
-requests
-typer
-pillow
-omegaconf
-evo
-e3nn
-moviepy
-plyfile
-pillow_heif
-safetensors
-pycolmap
+# pre-commit       # dev tool
+# trimesh          # 3D mesh export, not needed for inference
+# torch>=2         # already in venv (2.5.1+cu121)
+# torchvision      # already in venv
+einops             # needed: backbone + decoder tensor ops
+# huggingface_hub  # removed from api.py
+# imageio          # export/visualisation only
+# numpy<2          # conflicts with venv (numpy==2.2.6); constraint is overly conservative
+# opencv-python    # already in venv
+# xformers         # already in venv
+# open3d           # 3D visualisation, not needed for inference
+# fastapi          # web demo only
+# uvicorn          # web demo only
+# requests         # not needed for inference
+# typer            # CLI framework, not needed
+# pillow           # already in venv
+omegaconf          # needed: YAML config loading
+# evo              # trajectory evaluation, not needed
+# e3nn             # equivariant NNs, not needed for monocular inference
+# moviepy          # video export, not needed
+# plyfile          # PLY format export, not needed
+# pillow_heif      # HEIF image format, not needed
+safetensors        # needed: .safetensors checkpoint loading
+# pycolmap         # 3D reconstruction, not needed
+addict             # needed: dict attribute access in model forward (was missing from original)
