@@ -16,8 +16,6 @@ from __future__ import annotations
 
 import os
 import numpy as np
-import trimesh
-
 from depth_anything_3.specs import Prediction
 from depth_anything_3.utils.logger import logger
 
@@ -88,6 +86,7 @@ def export_to_glb(
     Returns:
         Path to the exported ``scene.glb`` file.
     """
+    import trimesh  # optional dep: only needed for GLB export
     # 1) Use prediction.processed_images, which is already processed image data
     assert (
         prediction.processed_images is not None

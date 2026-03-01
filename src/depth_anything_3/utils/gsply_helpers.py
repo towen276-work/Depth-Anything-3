@@ -16,7 +16,6 @@ from typing import Optional
 import numpy as np
 import torch
 from einops import rearrange, repeat
-from plyfile import PlyData, PlyElement
 from torch import Tensor
 
 from depth_anything_3.specs import Gaussians
@@ -99,6 +98,7 @@ def export_ply(
     attributes = np.concatenate(attributes, axis=1)
     elements[:] = list(map(tuple, attributes))
     path.parent.mkdir(exist_ok=True, parents=True)
+    from plyfile import PlyData, PlyElement  # optional dep: only needed for PLY export
     PlyData([PlyElement.describe(elements, "vertex")]).write(path)
 
 

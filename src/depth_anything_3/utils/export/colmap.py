@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import os
-import pycolmap
 import cv2 as cv
 import numpy as np
 
@@ -50,6 +49,7 @@ def export_to_colmap(
     points_xyf = points_xyf[prediction.conf >= conf_thresh]
 
     # 2. Set Reconstruction
+    import pycolmap  # optional dep: only needed for COLMAP export
     reconstruction = pycolmap.Reconstruction()
 
     point3d_ids = []
